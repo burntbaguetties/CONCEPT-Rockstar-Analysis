@@ -1,0 +1,2 @@
+# dsname	index
+dcdmtut3/snapshot_a=0.80_eff	0

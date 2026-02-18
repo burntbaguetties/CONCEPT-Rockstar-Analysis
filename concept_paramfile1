@@ -1,0 +1,122 @@
+# Non-parameter helper variable used to control the size of the simulation
+_size = 96
+ 
+# Non-parameter helper variables used to control the dcdm cosmology
+_Ω_cdm_plus_dcdm = 0.27  # total amount of stable and decaying cold dark matter
+_Γ = 100*km/(s*Mpc)       # decay rate
+
+# Input/output
+if _combine:
+    initial_conditions = [
+        # Non-linear (total) matter particles
+        {
+            'name'   : 'GADGET halo',
+            'species': (
+                'cold dark matter'
+                + (' + decaying cold dark matter' if _frac else '')
+            ),
+            'N'      : _size**3,
+        }
+    ]
+else:
+    # Assume 0 < _frac < 1
+    initial_conditions = [
+        # (stable) cold dark matter particles
+        {
+            'name'   : 'stable matter',
+            'species': 'cold dark matter',
+            'N'      : _size**3,
+        },
+        # Non-linear decaying cold dark matter particles
+        {
+            'name'   : 'decaying matter',
+            'species': 'decaying cold dark matter',
+            'N'      : _size**3,
+        },
+    ]
+for _species in _lin.split(','):
+    if not _species:
+        continue
+    initial_conditions.append(
+        # Linear fluid component(s)
+        {
+            'species'        : _species,
+            'gridsize'       : _size,
+            'boltzmann order': -1,
+        }
+    )
+output_dirs = {
+    'snapshot': f'{path.output_dir}/{param}',
+}
+
+
+
+output_times = {
+    'snapshot': [0.02, 0.5, 0.6, 0.7, 0.73, 0.75, 0.76, 0.765, 0.77, 0.775, 0.78, 0.79, 0.8, 0.85, 0.9, 1],
+
+}
+
+#    'render2D': ...,
+
+snapshot_type = 'gadget'
+
+# render2D_select = {
+#     'GADGET halo': {'data': False, 'image': True, 'terminal image': True},
+# }
+
+# # Graphics
+# render2D_options = {
+#     'gridsize': {
+#         'GADGET halo': _size,
+#     },
+#     'terminal resolution': {
+#         'GADGET halo': 80,
+#     },
+#     'colormap': {
+#         'GADGET halo': 'inferno',
+#     },
+# }
+
+
+
+# Numerics
+boxsize = 128*Mpc
+potential_options = {
+    'gridsize': {
+        'gravity': {
+            'p3m': 2*_size,
+        },
+    },
+}
+
+# Cosmology
+H0      = 67*km/(s*Mpc)
+#Ωb      = 0.049
+Ωcdm    = (1 - _frac)*_Ω_cdm_plus_dcdm
+a_begin = 0.02
+if _frac:
+    class_params = {
+        # Decaying cold dark matter parameters
+        'Omega_ini_dcdm': _frac*_Ω_cdm_plus_dcdm,
+        'Gamma_dcdm'    : _Γ/(km/(s*Mpc)),
+    }
+
+# Physics
+select_forces = {
+    'particles': {'gravity': 'p3m'},
+    'fluid'    : {'gravity': 'pm'},
+}
+if 'lapse' in _lin:
+    select_forces |= {
+        'decaying matter': 'lapse',
+        'total matter'   : 'lapse',
+    }
+
+# Simulation
+primordial_amplitude_fixed = True
+
+# Non-parameter helper variables which should
+# be supplied as command-line parameters.
+_lin     = ''    # linear species to include
+_frac    = 0.999     # fraction of total cold dark matter which is decaying
+_combine = True  # combine decaying and stable matter into a single component?
