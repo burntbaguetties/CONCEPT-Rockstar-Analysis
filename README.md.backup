@@ -61,8 +61,7 @@ Inside the folder creatively named **background densities & overdensity paramete
 * This notebook contains my code for calculating the energy density solution for an EMDE cosmology from the energy continuity differential equations (as described in the paper Barenboim et al 2021), then plotting the solutions. After that, using the density solutions, I do a spherical top-hat analysis using the EMDE background cosmology but assuming constant mass for the actual tophat density. The calculations are based off those in the _Galaxy Formation and Evolution_ textbook by Houjun Mo, Frank van den Bosch, and Simon White. From this estimate a solution for the overdensity parameter as a function of redshift z and plot it. I also plot the overdensity parameter approximations derived by Bryan & Norman (1998) as a comparison.
 
 
-**matter+curvature_overdensityparam.ipynb**:
-* This notebook is the exact same thing as the **EMDE_bkgdensities_overdensityparam.ipynb** notebook, except instead of a DCDM background cosmology, I use a matter + curvature background cosmology and compare it to the same Bryan & Norman 1998 formula as a check on my calculation method.
+**matter+curvature_overdensityparam.ipynb**: This notebook is the exact same thing as the **EMDE_bkgdensities_overdensityparam.ipynb** notebook, except instead of a DCDM background cosmology, I use a matter + curvature background cosmology and compare it to the same Bryan & Norman 1998 formula as a check on my calculation method.
 
 
 

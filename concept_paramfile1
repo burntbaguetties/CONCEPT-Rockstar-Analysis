@@ -52,7 +52,7 @@ output_dirs = {
 
 
 output_times = {
-    'snapshot': [0.02, 0.5, 0.6, 0.7, 0.73, 0.75, 0.76, 0.765, 0.77, 0.775, 0.78, 0.79, 0.8, 0.85, 0.9, 1],
+    'snapshot': [0.02, 0.6, 0.7, 0.8, 0.87, 0.9, 1.],
 
 }
 
@@ -91,7 +91,7 @@ potential_options = {
 
 # Cosmology
 H0      = 67*km/(s*Mpc)
-#Ωb      = 0.049
+Ωb      = 0.049
 Ωcdm    = (1 - _frac)*_Ω_cdm_plus_dcdm
 a_begin = 0.02
 if _frac:
