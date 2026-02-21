@@ -72,7 +72,7 @@ I included my Jupyter notebook **concept_simulation_densityplots.ipynb** where I
 
 
 
-## Credits & Citations:
+## Credits, Citations, & Code Used:
 * CONCEPT: Dakin, J., Hannestad, S., & Tram, T. 2022, MNRAS, 513, 991
 * yt: Turk, M. J., Smith, B. D., Oishi, J. S., Skory, S., Skillman, S. W., Abel, T., & Norman, M. L. 2011, ApJS, 192, 9
 * Rockstar-galaxies: Behroozi, P. S., Wechsler, R. H., & Wu, H.-Y. 2012, ApJ, 762, 109
@@ -88,6 +88,7 @@ I included my Jupyter notebook **concept_simulation_densityplots.ipynb** where I
 * _Galaxy Formation and Evolution_ textbook by Houjun Mo, Frank van den Bosch, and Simon White, published by the Cambridge University Press.
 * Bryan, G. L., & Norman, M. L. 1998, ApJ, 495, 80
 * Gabriela Barenboim et al JCAP12(2021)026
-* I used ChatGPT to assist in documenting the code: OpenAI. (2023). ChatGPT
+* I used ChatGPT to assist in documenting the code and improving its readability: OpenAI. (2023). ChatGPT
 * others (this list of sources will be completed soon)
+
 * This code was produced during research work under the advising of Professor Jessie Shelton at the University of Illinois Urbana-Champaign and in collaboration with Professor Joshua Foster at the University of Wisconsin-Madison.
